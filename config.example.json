@@ -1,0 +1,27 @@
+{
+  "database_path": "knowledge_hub.db",
+  "document_roots": [
+    "C:\\\\Users\\\\YourUser\\\\Documents\\\\HR",
+    "C:\\\\Users\\\\YourUser\\\\Documents\\\\Legal"
+  ],
+  "file_extensions": [
+    ".pdf",
+    ".docx",
+    ".xlsx",
+    ".txt",
+    ".csv",
+    ".pptx"
+  ],
+  "outlook_folders": [
+    "Inbox",
+    "Sent Items"
+  ],
+  "outlook_mailbox": null,
+  "max_email_body_chars": 25000,
+  "max_attachment_size_mb": 10,
+  "include_email_attachments": true,
+  "lookback_days": 730,
+  "skip_if_older_than_year": 2023,
+  "save_attachments_copy": false,
+  "attachment_export_folder": "C:\\\\Temp\\\\outlook_attachments_cache"
+}

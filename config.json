@@ -1,8 +1,7 @@
 {
-  "database_path": "knowledge_hub.db",
+  "database_path": "data\\\\knowledge_hub.db",
   "document_roots": [
-    "C:\\\\Users\\\\YourUser\\\\Documents\\\\HR",
-    "C:\\\\Users\\\\YourUser\\\\Documents\\\\Legal"
+    "C:\\\\Users\\\\ReneDeSmedt\\\\OneDrive - Kyndryl\\\\MyData"    
   ],
   "file_extensions": [
     ".pdf",

@@ -1,17 +1,28 @@
 from pathlib import Path
 import sqlite3
 
+import json
+import argparse
 import pandas as pd
 import streamlit as st
 
-DB_PATH = Path(__file__).resolve().parent / "knowledge_hub.db"
+def load_config(config_path: str) -> dict:
+    return json.loads(Path(config_path).read_text(encoding="utf-8"))
+
+parser = argparse.ArgumentParser(description="Personal Knowledge Hub")
+parser.add_argument("--config", default="config.json")
+args = parser.parse_args()
+CONFIG = load_config(args.config)
 
 st.set_page_config(page_title="Personal Knowledge Hub", layout="wide")
 st.title("Personal Knowledge Hub")
 st.caption("Search across indexed files, emails, and attachments.")
 
 
+
 def conn():
+    # DB_PATH = Path(__file__).resolve().parent / "knowledge_hub.db"    
+    DB_PATH = CONFIG.get("database_path", "knowledge_hub.db")      
     return sqlite3.connect(DB_PATH)
 
 
@@ -25,6 +36,7 @@ def distinct_values(column: str):
 
 
 with st.sidebar:
+   
     st.header("Filters")
     source_types = st.multiselect("Source type", distinct_values("source_type"))
     topics = st.multiselect("Topic", distinct_values("topic"))
@@ -34,6 +46,7 @@ with st.sidebar:
     years = st.multiselect("Year", distinct_values("year"))
     max_results = st.slider("Max results", 10, 200, 50)
 
+ 
 search = st.text_input("Search terms", placeholder="e.g. audit 2026 budget Belgium")
 conditions = []
 params = []
@@ -73,3 +86,5 @@ else:
                 st.write(row['summary'])
             if pd.notna(row['path']) and row['path']:
                 st.code(row['path'], language=None)
+
+

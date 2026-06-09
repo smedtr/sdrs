@@ -187,3 +187,5 @@ fabric.properties
 # Virtual Environment
 venv
 venv/
+# DB
+data/*.db
